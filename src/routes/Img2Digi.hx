@@ -1,4 +1,4 @@
-package pages;
+package routes;
 
 import libs.Flask;
 import libs.Requests;

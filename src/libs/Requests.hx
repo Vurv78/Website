@@ -1,5 +1,4 @@
 package libs;
-import libs.Python;
 using python.KwArgs;
 
 @:pythonImport("requests")

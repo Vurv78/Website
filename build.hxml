@@ -1,0 +1,4 @@
+-dce full
+-p src
+--python "wsgi.py"
+-main Main

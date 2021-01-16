@@ -1,0 +1,76 @@
+body{
+    background-color: #829099;
+}
+
+h1{
+    color: black;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+}
+th{
+    background-color: #00487C;
+}
+td,th{
+    text-align: left;
+    padding: 8px;
+    border: 3px solid #464d52;
+}
+tr:nth-child(even) {
+    background-color: #07393C;
+}
+tr:nth-child(odd) {
+    background-color: #2C666E;
+}
+
+button {
+  background-color: #00487C; /* Copy of Table Header */
+  border: 1px solid #464d52;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+button:active{
+    background-color: #005896;
+}
+
+img{
+    border: 2px solid #464d52;
+    border-radius: 3px;
+}
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #00487C;
+}

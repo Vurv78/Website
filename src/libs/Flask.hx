@@ -1,11 +1,14 @@
 package libs;
 import libs.Python;
+
+using python.KwArgs;
 using haxe.extern.EitherType;
 
 @:pythonImport("flask")
 extern class Flask {
-    @:pythonImport("redirect") static function redirect( url:String, code:Int ):Dynamic;
-    @:pythonImport("send_from_directory") static function send_from_directory( dir:String, file_name:String ):Dynamic; // No idea what this returns
+    static function redirect( url:String, code:Int ):Dynamic;
+    static function send_from_directory( dir:String, file_name:String ):Dynamic; // No idea what this returns
+    static function render_template( dir:String, args:KwArgs<Dynamic> ):Dynamic;
 }
 
 @:pythonImport("flask","request")
