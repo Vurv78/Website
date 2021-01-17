@@ -13,8 +13,8 @@ abstract Path(String) from String to String {
     }
 }
 
-class API {
-    public static var srv:String;
+class Api {
+    public static var asset_path:Path;
     public static function punt( err:String ){
         return "ERROR: " + err;
     }
@@ -30,5 +30,9 @@ class API {
 
     public static function path( p:String ):Path {
         return new Path( p );
+    }
+
+    public static function send_from_assets( dir:String, file_name:String ) {
+        return Flask.send_from_directory( asset_path / dir, file_name );
     }
 }

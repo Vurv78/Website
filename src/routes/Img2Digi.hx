@@ -2,7 +2,7 @@ package routes;
 
 import libs.Flask;
 import libs.Requests;
-import libs.API;
+import libs.Api;
 
 @:pythonImport("PIL","Image")
 extern class Image {
@@ -22,7 +22,7 @@ class Img2Digi {
             // Default Image https://cdn.discordapp.com/attachments/732861600708690010/799877632737017856/unknown.png
             var img_url = Request.args.get("url","https://cdn.discordapp.com/attachments/732861600708690010/799877632737017856/unknown.png");
 
-            if(!API.valid_url(img_url)){ return API.punt("Invalid url given."); }
+            if(!Api.valid_url(img_url)){ return Api.punt("Invalid url given."); }
             var res:Int = Std.parseInt( Request.args.get("res","256") );
 
             res = res > 0 ? res : 0; // Don't let res be negative or greater than 512.

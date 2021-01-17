@@ -1,6 +1,6 @@
 import libs.Python;
 import libs.Flask; // Flask.hx
-import libs.API;
+import libs.Api;
 
 /* Web Pages */
 import routes.Query; // "/query"
@@ -13,10 +13,12 @@ class Main {
         untyped { Externs.globals()["application"] = app; }
         app.debug = true;
 
-        var proj_home: Path = API.path("/home/vurv/site/"); // Base website file path.
+        var proj_home: Path = Api.path("/home/vurv/Webserver/"); // Base website file path.
         python.Syntax.code("if proj_home not in sys.path:\n            sys.path = [proj_home] + sys.path");
 
-        var web_path: Path = API.path( "https://vurv.pythonanywhere.com" );
+        Api.asset_path = proj_home / "site" / "assets";
+
+        var web_path: Path = Api.path( "https://vurv.pythonanywhere.com" );
 
         // Redirect from / to /home
         function everyroute() {
@@ -27,7 +29,7 @@ class Main {
 
         // Home page. /home
         function home() {
-            return Flask.send_from_directory(proj_home / "assets" / "home_route" , "home.html");
+            return Api.send_from_assets("home_route" , "home.html");
         }
 
         app.add_url_rule("/home","home",home);
@@ -36,7 +38,7 @@ class Main {
         try { PPMViewer.run(app);  } catch(e:haxe.Exception) { trace(e.stack); }
         try { Img2Digi.run(app);  } catch(e:haxe.Exception) { trace(e.stack); }
 
-        if(Externs.py_name == "__main__") {
+        if( Sys.args()[1]!="ci" && Externs.py_name == "__main__") {
             app.run();
         }
     }

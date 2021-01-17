@@ -2,7 +2,7 @@ package routes;
 
 import libs.Flask;
 import libs.Requests;
-import libs.API;
+import libs.Api;
 
 class Query {
     public static function run(app:App) {
@@ -10,7 +10,7 @@ class Query {
             var webhook_url = Request.args.get("webhook",null);
             var content = Request.args.get("content",null);
             if(webhook_url == null || content == null){
-                return API.punt("You need to provide the 'webhook' and 'content' keys!");
+                return Api.punt("You need to provide the 'webhook' and 'content' keys!");
             }
             var bot_name = Request.args.get("name",null);
             var avatar = Request.args.get("avatar",null);
