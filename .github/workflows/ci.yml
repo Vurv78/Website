@@ -12,13 +12,13 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
+
       # Setup haxe
       - name: Dependencies
         uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.1.5
-      
+
       - name: Setup Python
         uses: actions/setup-python@v2.2.1
         with:
@@ -37,9 +37,9 @@ jobs:
           pip install pipreqs
           pipreqs . # Current directory
           pip install -r requirements.txt # Install all modules found
-      
+
       # Run python code.
       - name: Test
         run: |
-          python wsgi.py
-          
+          python wsgi.py ci
+

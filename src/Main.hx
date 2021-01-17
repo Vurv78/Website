@@ -38,7 +38,7 @@ class Main {
         try { PPMViewer.run(app);  } catch(e:haxe.Exception) { trace(e.stack); }
         try { Img2Digi.run(app);  } catch(e:haxe.Exception) { trace(e.stack); }
 
-        if( Sys.args()[1]!="ci" && Externs.py_name == "__main__") {
+        if( Sys.args()[0]!="ci" && Externs.py_name == "__main__") {
             app.run();
         }
     }
