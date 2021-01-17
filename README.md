@@ -1,6 +1,8 @@
 ## Webserver
 
 ![GHWorkflow](https://github.com/Vurv78/Webserver/workflows/CI/badge.svg)
+[![Website Status](https://img.shields.io/website-up-down-blue-red/http/vurv.pythonanywhere.com.svg)](http://vurv.pythonanywhere.com/)
+
 
 This is the source code of my webserver hosted with python flask, being rewritten in Haxe.
 
