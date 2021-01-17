@@ -5,7 +5,10 @@
 
 
 This is the source code of my webserver hosted with python flask, being rewritten in Haxe.
+Hopefully in the future this will auto-pull to pythonanywhere.
 
-Putting it here cuz it makes the Github look nice and so people know what exactly my website does for learning purposes ig.
+### Why is this a repo?
+I'm putting this here so people can learn from what my website does, how to set up a CI in Haxe, etc.
 
-Rewriting it because Haxe code looks soo much nicer than python code to me.
+### Why am I rewriting it in Haxe?
+Because Haxe is typed, looks better and overall I don't really like python's syntax. Haxe solves all of this and It's been a really nice project
