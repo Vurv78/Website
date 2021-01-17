@@ -29,14 +29,10 @@ function ppmRead(data,callback){
           callback(false,"Number of pixels not equal to resolution.");
           return false;
         }
-        //console.log("Resolution is: ",Resolution,"\nColor Mode is: ",ColorMode,"\nData is: ",FixedPPMData)
       }
-      //console.log(Resolution[0],Resolution[1])
-    }else if(Mode=="P6"){
-      // P6
     }else{
       if(callback){
-        callback("Invalid ppm mode given")
+        callback("Invalid/Unsupported ppm mode given");
       }
       return false;
     }

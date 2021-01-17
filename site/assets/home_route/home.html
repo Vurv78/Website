@@ -1,23 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <! –– Navigation bar -->
   <ul>
     <li><a href="home" class="active">Home</a></li>
-    <li><a href="me">Creations</a></li>
     <li><a href="ppm">PPM Viewer</a></li>
     <li><a href="digscreen">Img->Digital Screen</a></li>
     <li><a href="query">Query</a></li>
-    <li><a href="ytdl?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ">YTDL Audio Fetcher</a></li>
-    <li><a href="speedreq">SpeedReq</a></li>
   </ul>
   <body>
-    <link href="/assets/homestyles.css" rel="stylesheet" type="text/css">
-    <script src="/assets/homescript.js"></script>
+    <link href="/site/assets/home_route/styles.css" rel="stylesheet" type="text/css">
+    <script src="/site/assets/home_route/script.js"></script>
     <h1>Vurv's Webserver</h1>
-    <body>This is a webserver used for useful things that I do and that mostly anyone can use.</body>
-        <h2> Contacts</h3>
-        Add me on Discord: <@363590853140152321><br>
-        <a href="https://github.com/Vurv78" style="font-size: 20px;">Check out my Github</a>
+    <body>This is a webserver with a few APIs anyone can use</body>
+        <a href="https://github.com/Vurv78" style="font-size: 20px;">Github</a>
     </body>
     <br></br>
     <h3> Features </h3>
@@ -31,7 +25,7 @@
         <tr>
             <td>"/digscreen"</td>
             <td style="color:#4cf576">Online</td>
-            <td>Returns comma separated RRRGGGBBB formatted Image Data</td>
+            <td>Returns comma separated RRRGGGBBB formatted Image Data if Version != 1. Else returns RGBIntegers</td>
             <td>Url,Res,Version[O]</td>
         </tr>
         <tr>
@@ -40,22 +34,10 @@
             <td>Sends query to discord webhooks. Max 2000 chars. Returns error or "success".</td>
             <td>Webhook,Content,Name[O],Avatar[O]</td>
         </tr>
-        <tr>
-            <td>"/ytdl"</td>
-            <td style="color:#4cf576">Online</td>
-            <td>Returns url to audio from a youtube video using python-ytdl. Defaults to m4a.</td>
-            <td>Url,Audioformat[O]</td>
-        </tr>
-        <tr>
-            <td>"/speedreq"</td>
-            <td style="color:#4cf576">Online</td>
-            <td>Returns results from multiple HTTP requests, has a 1 second timeout length.</td>
-            <td>Any arg names, must give in between 2 to 50 urls. (Ex: a=https://google.com)</td>
-        </tr>
     </table>
 
     <h3>Discord Webhook Sender</h3>
-    <body> Send a message to a discord webhook here! </body><br>
+    <body> Send a message to a discord webhook here. </body><br>
     <label for="webhooklink" style="font-size: 20px">Link:</label><br>
     <textarea rows="4" cols="50" id="webhooklink" name="webhooklink" rows="4" cols="50" placeholder="Link for your webhook here.">https://discordapp.com/api/webhooks/713830618454032465/-Zmm-nXi3MwoPom0edpRXknoX__OXCmVNjr6kUp7KPj2NPuHlEEQoqXyHNIBUg5LOnpD</textarea><br>
     <label for="webhooktext" style="font-size: 20px">Text:</label><br>

@@ -1,6 +1,6 @@
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on: [push, pull_request]
 
 jobs:
@@ -39,7 +39,6 @@ jobs:
           pip install -r requirements.txt # Install all modules found
 
       # Run python code.
-      - name: Test
+      - name: Test Python Code
         run: |
           python wsgi.py ci
-
