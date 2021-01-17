@@ -21,13 +21,22 @@ jobs:
       
       - name: Setup Python
         uses: actions/setup-python@v2.2.1
-
+        with:
+          python-version: '3.x'
+          architecture: x64
 
       # Build haxe code to python.
       - name: Build
         run: |
           haxe -version
           haxe build.hxml
+
+      # Automatically generate a requirements.txt file and import everything from there.
+      - name: Generate Requirements
+        run: |
+          pip install pipreqs
+          pipreqs wsgi.py
+          pip install -r requirements.txt # Install all modules found
       
       # Run python code.
       - name: Test
