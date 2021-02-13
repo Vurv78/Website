@@ -15,11 +15,11 @@ class Query {
             var bot_name = Request.args.get("name",null);
             var avatar = Request.args.get("avatar",null);
 
-            var dict_to_send = {
-                "content" : content,
-                "username" : bot_name,
-                "avatar_url" : avatar,
-            };
+            var dict_to_send = new python.Dict<String, String>();
+            dict_to_send.set("content", content);
+            dict_to_send.set("username", bot_name);
+            dict_to_send.set("avatar_url", avatar);
+
             Requests.post( webhook_url, {"json" : dict_to_send} );
             return "Success";
         }
