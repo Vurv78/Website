@@ -9,28 +9,24 @@
   <body>
     <link href="/assets/home_route/styles.css" rel="stylesheet" type="text/css">
     <script src="/assets/home_route/script.js"></script>
-    <h1>Vurv's Webserver</h1>
-    <body>This is a webserver with a few APIs anyone can use</body>
-        <a href="https://github.com/Vurv78" style="font-size: 20px;">Github</a>
-    </body>
-    <br></br>
-    <h3> Features </h3>
+    <a href="https://github.com/Vurv78/Website" style="font-size: 20px;">Source Code</a>
+    <h3> APIs </h3>
     <table>
         <tr>
-            <th>API</th>
-            <th>Status</th>
+            <th>Route</th>
+            <!-- <th>Status</th> -->
             <th>Description</th>
             <th>Args</th>
         </tr>
         <tr>
             <td>"/digscreen"</td>
-            <td style="color:#4cf576">Online</td>
+            <!-- <td style="color:#4cf576">Online</td> --->
             <td>Returns comma separated RRRGGGBBB formatted Image Data if Version != 1. Else returns RGBIntegers</td>
             <td>Url,Res,Version[O]</td>
         </tr>
         <tr>
             <td>"/query"</td>
-            <td style="color:#4cf576">Online</td>
+            <!-- <td style="color:#4cf576">Online</td> --->
             <td>Sends query to discord webhooks. Max 2000 chars. Returns error or "success".</td>
             <td>Webhook,Content,Name[O],Avatar[O]</td>
         </tr>

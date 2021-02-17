@@ -3,7 +3,7 @@
 [![Website Status](https://img.shields.io/website-up-down-blue-red/http/vurv.pythonanywhere.com.svg)](http://vurv.pythonanywhere.com/)
 
 
-This is the source code of my webserver hosted with python flask, being rewritten in Haxe.
+This is the source code of my website hosted with python flask, being rewritten in Haxe.
 Hopefully in the future this will auto-pull to pythonanywhere.
 
 ### Why is this a repo?
