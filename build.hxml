@@ -1,0 +1,4 @@
+--dce full
+--class-path src
+--python wsgi.py
+--main Main
