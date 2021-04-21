@@ -75,9 +75,7 @@ class Main:
         app = libs_App("main")
         globals()["application"] = app
         app.debug = True
-        proj_path = libs_Api.path("/home/vurv/Website/")
-        if proj_path not in sys.path:
-            sys.path = [proj_path] + sys.path
+        proj_path = libs_Api.path("/home/vurv/")
         libs_Api.asset_path = libs__Api_Path_Impl_.div(proj_path,"assets")
         web_path = libs_Api.path("https://vurv.pythonanywhere.com")
         def _hx_local_0():
