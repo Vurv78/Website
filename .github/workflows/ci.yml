@@ -1,7 +1,7 @@
 name: Build
 
 # Controls when the action will run.
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
