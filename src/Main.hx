@@ -16,9 +16,8 @@ class Main {
         untyped { Externs.globals()["application"] = app; }
         app.debug = true;
 
-        // Project directory, not the /src/ dir.
-        var proj_path: Path = Api.path("/home/vurv/Website/"); // Base website file path.
-        python.Syntax.code("if proj_path not in sys.path:\n            sys.path = [proj_path] + sys.path");
+        // Where this repo will be cloned on pythonanywhere
+        var proj_path: Path = Api.path("/home/vurv/"); // Base website file path.
 
         // Working directory
         Api.asset_path = proj_path / "assets";
