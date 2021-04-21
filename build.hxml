@@ -1,4 +1,4 @@
 --dce full
 --class-path src
---python out/wsgi.py
+--python wsgi.py
 --main Main

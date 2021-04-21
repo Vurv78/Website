@@ -1,4 +1,4 @@
-name: CI
+name: Build
 
 # Controls when the action will run.
 on: [push, pull_request]
@@ -41,13 +41,13 @@ jobs:
       # Run python code.
       - name: Test Python Code
         run: |
-          python out/wsgi.py ci
+          python wsgi.py ci
 
       - name: Deploy to wsgi branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          publish_dir: ./
           publish_branch: wsgi
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
