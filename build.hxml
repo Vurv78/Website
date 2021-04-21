@@ -1,4 +1,4 @@
--dce full
--p src
---python "wsgi.py"
--main Main
+--dce full
+--class-path src
+--python out/wsgi.py
+--main Main
