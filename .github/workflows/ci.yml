@@ -42,12 +42,18 @@ jobs:
       - name: Test Python Code
         run: |
           python wsgi.py ci
+        
+      - name: Move files to output folder
+        run: |
+          mkdir output
+          mv /assets/* /out/assets
+          mv wsgi.py output
 
       - name: Deploy to wsgi branch
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          publish_dir: ./output
           publish_branch: wsgi
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
