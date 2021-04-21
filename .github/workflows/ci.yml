@@ -46,7 +46,7 @@ jobs:
       - name: Move files to output folder
         run: |
           mkdir output
-          mv /assets/* /out/assets
+          mv assets out/assets
           mv wsgi.py output
 
       - name: Deploy to wsgi branch
