@@ -6,8 +6,7 @@ It automatically generates a wsgi.py file from the Haxe source code at each comm
 
 ## Features
 1. Image URL -> Digital Screen RGB Data
-2. Rudimentary PPM P3 Viewer
-3. Discord Webhook Query Sender (In order to bypass Discord's Ban on Steam HTTP.)
+2. Discord Webhook Query Sender (In order to bypass Discord's Ban on Steam HTTP.)
 
 ## Contributing
 Any contributions are appreciated. If you want to make something neat as an api but don't want to host a site yourself, make a PR.
