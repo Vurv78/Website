@@ -1,7 +1,10 @@
 name: Build
 
 # Controls when the action will run.
-on: [push]
+on:
+  # Only run on commits from master branch
+  push:
+      branches: [ master ]
 
 jobs:
   build:
@@ -42,7 +45,7 @@ jobs:
       - name: Test Python Code
         run: |
           python wsgi.py ci
-        
+
       - name: Move files to output folder
         run: |
           mkdir output
