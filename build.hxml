@@ -3,3 +3,6 @@
 
 --python wsgi.py
 --main Main
+
+--macro nullSafety('libs', Strict)
+--macro nullSafety('routes', Strict)

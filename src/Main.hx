@@ -28,7 +28,6 @@ class Main {
         // Todo: Make this interface with the home HTML to show whether webpages are active or not.
         try { routes.Home.run(app); } catch(e:Exception) { trace(e.stack); }
         try { routes.Query.run(app);  } catch(e:Exception) { trace(e.stack); }
-        try { routes.PPMViewer.run(app);  } catch(e:Exception) { trace(e.stack); }
         try { routes.Img2Digi.run(app);  } catch(e:Exception) { trace(e.stack); }
 
         if( Sys.args()[0] != "ci" && Externs.py_name == "__main__") {

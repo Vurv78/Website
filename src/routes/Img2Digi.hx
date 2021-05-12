@@ -1,8 +1,11 @@
 package routes;
 
 import libs.Flask;
-import libs.Requests;
 import libs.Api;
+
+import haxe.Http;
+
+final DEFAULT_IMG:String = "https://cdn.discordapp.com/attachments/732861600708690010/799877632737017856/unknown.png";
 
 @:pythonImport("PIL","Image")
 extern class Image {
@@ -16,25 +19,37 @@ extern class IO {
     static function BytesIO( content:String ):Dynamic; // Returns BytesIO Class
 }
 
+@:nullSafety(Off) // TODO
 function route() {
-    // Default Image https://cdn.discordapp.com/attachments/732861600708690010/799877632737017856/unknown.png
-    var img_url = Request.args.get("url","https://cdn.discordapp.com/attachments/732861600708690010/799877632737017856/unknown.png");
+    var img_url = Request.args.get("url", DEFAULT_IMG);
 
-    if(!Api.valid_url(img_url)){ return Api.punt("Invalid url given."); }
-    var res:Int = Std.parseInt( Request.args.get("res","256") );
+    if( !Api.valid_url(img_url) )
+        return Api.punt("Invalid url given.");
+
+    var res = Std.parseInt( Request.args.get("res", "256") );
 
     res = res > 0 ? res : 0; // Don't let res be negative or greater than 512.
     res = res > 512 ? 512 : res;
 
-    var version:Int = Std.parseInt( Request.args.get("version","1") );
+    var version = Std.parseInt( Request.args.get("version","1") );
 
-    var img_response = Requests.get( img_url, { "timeout" : 3 } );
-    var img = Image.open( IO.BytesIO( img_response.content ) );
-    img = img.resize( new python.Tuple<Dynamic>( [res, res] ) );
+    var out = "";
+    var response = new Http(img_url);
+        response.setParameter("timeout", "3");
+        response.onData = function(data) {
+            out = data;
+        }
+        response.onError = function(e) {
+            return Api.punt(e);
+        }
+        response.request(false);
+
+    var img = Image.open( IO.BytesIO( out ) );
+    img = img.resize( new python.Tuple( [res, res] ) );
 
     return switch version {
         case 1:
-            python.Syntax.code("''.join(str(c[0]<<16+c[1]<<8+c[2]) for c in img.getdata())");
+            python.Syntax.code("''.join(str( c[0]<<16 + c[1]<<8 + c[2]) for c in img.getdata())");
         case 2:
             python.Syntax.code("''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())");
         default:
