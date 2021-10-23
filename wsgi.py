@@ -2387,7 +2387,7 @@ class routes__Img2Digi_Img2Digi_Fields_:
         response.onError = _hx_local_1
         response.request(False)
         _hx_bytes = bytes(out,"utf-8")
-        img = routes_Image.frombytes("RGBA",tuple([res, res]),_hx_bytes)
+        img = routes_Image.open(_hx_bytes)
         img = img.resize(tuple([res, res]))
         if (version is None):
             return libs_Api.punt("Version must be 1 or 2")
