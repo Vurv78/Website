@@ -43,7 +43,7 @@ function route() {
 		}
 		response.request(false);
 
-	var img = Image.open( new BytesIO(untyped out) );
+	var img = Image.open( new BytesIO( untyped new Bytes(out, "ascii") ) );
 	img = img.resize( new python.Tuple( [res, res] ) );
 
 	return switch version {
