@@ -22,7 +22,6 @@ from socket import socket as python_lib_socket_Socket
 from ssl import SSLContext as python_lib_ssl_SSLContext
 import urllib.parse as python_lib_urllib_Parse
 from PIL import Image as routes_Image
-import io as routes_IO
 
 
 class _hx_AnonObject:
@@ -2387,7 +2386,8 @@ class routes__Img2Digi_Img2Digi_Fields_:
             return libs_Api.punt(e)
         response.onError = _hx_local_1
         response.request(False)
-        img = routes_Image.open(routes_IO.BytesIO(out))
+        _hx_bytes = bytes(out,"utf-8")
+        img = routes_Image.frombytes("RGBA",tuple([res, res]),_hx_bytes)
         img = img.resize(tuple([res, res]))
         if (version is None):
             return libs_Api.punt("Version must be 1 or 2")
