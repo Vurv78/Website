@@ -2387,7 +2387,7 @@ class routes__Img2Digi_Img2Digi_Fields_:
             return libs_Api.punt(e)
         response.onError = _hx_local_1
         response.request(False)
-        img = routes_Image.open(python_lib_io_BytesIO(out))
+        img = routes_Image.open(python_lib_io_BytesIO(bytes(out,"ascii")))
         img = img.resize(tuple([res, res]))
         if (version is None):
             return libs_Api.punt("Version must be 1 or 2")
