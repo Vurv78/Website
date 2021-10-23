@@ -12,7 +12,7 @@ final DEFAULT_IMG:String = "https://cdn.discordapp.com/attachments/7328616007086
 
 @:pythonImport("PIL","Image")
 extern class Image {
-	static function open( data:String ):Image;
+	static function open( data:Any ):Image;
 	function resize( new_size:Tuple<UInt> ):Image; // Returns a copy, doesn't self modify.
 	function getdata():Iterator<Dynamic>; // Returns a 'sequence like' object. Nice python.
 	static function frombytes(mode: String, size: Tuple<UInt>, data: Bytes):Image;
@@ -45,7 +45,7 @@ function route() {
 
 	final bytes = new Bytes(out, "utf-8");
 
-	var img = Image.frombytes( "RGBA", new Tuple([res, res]), bytes );
+	var img = Image.open( bytes );
 	img = img.resize( new python.Tuple( [res, res] ) );
 
 	return switch version {
