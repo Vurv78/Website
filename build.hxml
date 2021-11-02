@@ -1,6 +1,8 @@
 --dce full
 --class-path src
 
+--library safety
+
 --python wsgi.py
 --main Main
 
