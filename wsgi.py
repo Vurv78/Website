@@ -2346,25 +2346,25 @@ class routes__Img2Digi_Img2Digi_Fields_:
         if (not libs_Api.valid_url(img_url)):
             return libs_Api.punt("Invalid url given.")
         value = Std.parseInt(libs_Request.args.get("res","256"))
-        res = (0 if ((value is None)) else value)
+        res = (512 if ((value is None)) else value)
         if (res <= 0):
             res = 0
         if (res > 512):
             res = 512
-        version = Std.parseInt(libs_Request.args.get("version","1"))
+        value = Std.parseInt(libs_Request.args.get("version","1"))
+        version = (2 if ((value is None)) else value)
+        if ((version > 2) or ((version < 1))):
+            return libs_Api.punt("Invalid version given. (Should be 1 or 2)")
         response = libs_Requests.get(img_url,**python__KwArgs_KwArgs_Impl_.fromT(_hx_AnonObject({'timeout': 3})))
         img = routes_Image.open(routes_IO.BytesIO(response.content))
         img = img.resize(tuple([res, res]))
-        if (version is None):
-            return libs_Api.punt("Version must be 1 or 2")
+        version1 = version
+        if (version1 == 1):
+            return ''.join(str( c[0]<<16 + c[1]<<8 + c[2]) for c in img.getdata())
+        elif (version1 == 2):
+            return ''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())
         else:
-            version1 = version
-            if (version1 == 1):
-                return ''.join(str( c[0]<<16 + c[1]<<8 + c[2]) for c in img.getdata())
-            elif (version1 == 2):
-                return ''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())
-            else:
-                return libs_Api.punt("Version must be 1 or 2")
+            raise haxe_Exception.thrown("Never")
 
     @staticmethod
     def run(app):
