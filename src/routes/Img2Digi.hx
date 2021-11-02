@@ -28,12 +28,16 @@ function route() {
 	if( !Api.valid_url(img_url) )
 		return Api.punt("Invalid url given.");
 
-	var res = Std.parseInt( Request.args.get("res", "256") ).or(0);
+	var res = Std.parseInt( Request.args.get("res", "256") ).or(512);
 
 	res = res > 0 ? res : 0; // Don't let res be negative or greater than 512.
 	res = res > 512 ? 512 : res;
 
-	var version = Std.parseInt( Request.args.get("version","1") );
+	var version = Std.parseInt( Request.args.get("version","1") ).or(2);
+
+	if (version > 2 || version < 1) {
+		return Api.punt("Invalid version given. (Should be 1 or 2)");
+	}
 
 	final response = Requests.get(img_url, {"timeout": 3});
 
@@ -45,8 +49,7 @@ function route() {
 			python.Syntax.code("''.join(str( c[0]<<16 + c[1]<<8 + c[2]) for c in img.getdata())");
 		case 2:
 			python.Syntax.code("''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())");
-		default:
-			Api.punt("Version must be 1 or 2");
+		default: throw "Never";
 	}
 }
 
