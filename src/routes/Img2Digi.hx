@@ -33,7 +33,7 @@ function route() {
 	res = res > 0 ? res : 0; // Don't let res be negative or greater than 512.
 	res = res > 512 ? 512 : res;
 
-	var version = Std.parseInt( Request.args.get("version","1") ).or(2);
+	var version = Std.parseInt( Request.args.get("version", "2") ).or(2);
 
 	if (version > 2 || version < 1) {
 		return Api.punt("Invalid version given. (Should be 1 or 2)");

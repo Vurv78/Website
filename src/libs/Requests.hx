@@ -13,4 +13,7 @@ extern class Requests {
 @:pythonImport("requests","response")
 extern class Response {
 	public var content: String;
+	public var reason: String;
+	public var status_code: UInt;
+	public var ok: Bool;
 }
