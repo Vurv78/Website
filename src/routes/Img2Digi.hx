@@ -35,8 +35,8 @@ function route() {
 
 	var version = Std.parseInt( Request.args.get("version", "2") ).or(2);
 
-	if (version > 2 || version < 1) {
-		return Api.punt("Invalid version given. (Should be 1 or 2)");
+	if (version > 3 || version < 1) {
+		return Api.punt("Invalid version given. (Should be 1, 2 or 3)");
 	}
 
 	final response = Requests.get(img_url, {"timeout": 3});
@@ -49,7 +49,10 @@ function route() {
 			python.Syntax.code("''.join(str( c[0]<<16 + c[1]<<8 + c[2]) for c in img.getdata())");
 		case 2:
 			python.Syntax.code("''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())");
-		default: throw "Never";
+		case 3:
+			python.Syntax.code("''.join(chr(color[0]) + chr(color[1]) + chr(color[2]) for color in img.getdata())")
+		default:
+			throw "Never";
 	}
 }
 
