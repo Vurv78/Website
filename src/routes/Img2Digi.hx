@@ -50,7 +50,7 @@ function route() {
 		case 2:
 			python.Syntax.code("''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())");
 		case 3:
-			python.Syntax.code("''.join(chr(color[0]) + chr(color[1]) + chr(color[2]) for color in img.getdata())")
+			python.Syntax.code("''.join(chr(color[0]) + chr(color[1]) + chr(color[2]) for color in img.getdata())");
 		default:
 			throw "Never";
 	}
