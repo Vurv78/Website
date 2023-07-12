@@ -1123,8 +1123,8 @@ class routes__Img2Digi_Img2Digi_Fields_:
             res = 512
         value = Std.parseInt(libs_Request.args.get("version","2"))
         version = (2 if ((value is None)) else value)
-        if ((version > 2) or ((version < 1))):
-            return libs_Api.punt("Invalid version given. (Should be 1 or 2)")
+        if ((version > 3) or ((version < 1))):
+            return libs_Api.punt("Invalid version given. (Should be 1, 2 or 3)")
         response = libs_Requests.get(img_url,**python__KwArgs_KwArgs_Impl_.fromT(_hx_AnonObject({'timeout': 3})))
         img = routes_Image.open(routes_IO.BytesIO(response.content))
         img = img.resize(tuple([res, res]))
@@ -1133,6 +1133,8 @@ class routes__Img2Digi_Img2Digi_Fields_:
             return ''.join(str( c[0]<<16 + c[1]<<8 + c[2]) for c in img.getdata())
         elif (version1 == 2):
             return ''.join('%03d' % rgb[0]+'%03d' % rgb[1]+'%03d' % rgb[2] for rgb in img.getdata())
+        elif (version1 == 3):
+            return ''.join(chr(color[0]) + chr(color[1]) + chr(color[2]) for color in img.getdata())
         else:
             raise haxe_Exception.thrown("Never")
 
